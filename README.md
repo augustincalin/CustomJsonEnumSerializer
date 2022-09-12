@@ -35,7 +35,7 @@ What we want is to "unify" these **terms** and use internally only one, which is
 
 For instance, even if we receive _Eigentumswohnung_ (which is a valid value!) we want to have it as _Condominium_ after the incoming JSON is deserialized. Also, if the incoming JSON has Category = _Condominium_, we want to deserialize it as _Condominium_.
 
-Additionally, we also want to be able to "translate" back the internal notion _Condominium_ into the original value based on the **Discriminator** property.  
+Additionally, when it comes to serialization (that's it, send **ReportRequest** down the wire) we also want to be able to "translate" back the internal notion _Condominium_ into the original value based on the **Discriminator** property.  
 
 Have a look at the following tables:
 ### Incomming
@@ -50,7 +50,9 @@ Have a look at the following tables:
 | Grundstueck         | UndevelopedPlot            |
 | UndevelopedPlot     | UndevelopedPlot            |
 
-> As you can see, the terms _Eigentumswohnung_, _Condominium_ represents the same notion, which is _Condominium_. The same is valid for the others. 
+> As you can see, the **terms** _Eigentumswohnung_, _Condominium_ represents the same **notion** (_Condominium_).  
+>
+> The same is valid for the others. 
 
 ### Output
 | Value       | Discriminator | ...will be "translated" to |
@@ -58,7 +60,6 @@ Have a look at the following tables:
 | Condominium | DE            | Eigentumswohnung           |
 | Condominium | AT            | Eigentumswohnung           |
 | Condominium | HR            | Condominium                |
-| ...         |               |                            |
 | ...         |               |                            |
 
 To translate back from a more generic item (a notion) to a more specific one (a term) we need an extra piece of information, which is kept in **Discriminator** property.  
