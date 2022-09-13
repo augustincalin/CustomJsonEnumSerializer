@@ -43,8 +43,8 @@ namespace CJES.Controllers
              *    please note that even if the incoming reportRequest is using the more specific term of Eigentumswohnung,
              *   the value obtained after deserialization is using the more generic notion of Condominium.
              *   To see this, place a breakpoint on the next line and inspect the reportRequest.Category.
-             *   If you continue the execution you will see (in swagger, for example), the same Eigentumswohnung -- this happens because the 
-             *   deserialization happens again and translates the Condominium back into the original Eigentumswohnung.
+             *   Still, when you continue the execution you will see (in swagger, for example), the same Eigentumswohnung -- this is because the 
+             *   deserialization happens again and Condominium is translated back into the original Eigentumswohnung.
              **/
             return Ok(reportRequest);
         }
